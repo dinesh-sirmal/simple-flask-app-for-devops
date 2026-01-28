@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Flask Notes App</title>
+</head>
+<body>
+    <h1>My Notes</h1>
+    <form method="POST">
+        <input type="text" name="note" placeholder="Enter a note" required>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <ul>
+        {% for note in notes %}
+            <li>{{ note }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

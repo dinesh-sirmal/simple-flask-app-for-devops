@@ -1,0 +1,18 @@
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+# Simple in-memory storage for notes
+notes = []
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        note = request.form.get("note")
+        if note:
+            notes.append(note)
+        return redirect(url_for("index"))
+    return render_template("index.html", notes=notes)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
